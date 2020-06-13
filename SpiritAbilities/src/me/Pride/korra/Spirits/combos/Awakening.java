@@ -235,10 +235,11 @@ public class Awakening extends LightAbility implements AddonAbility, ComboAbilit
 							if (entity instanceof Player) {
 								Player pent = (Player) entity;
 								BendingPlayer bEntity = BendingPlayer.getBendingPlayer(pent);
-								
-								if (bEntity.hasElement(SpiritElement.DARK_SPIRIT)) {
-									beam(lightSpirits, entity);
-								}
+				                if(bEntity != null) {
+									if (bEntity.hasElement(SpiritElement.DARK_SPIRIT)) {
+										beam(lightSpirits, entity);
+									}
+				                }
 								
 							} else if (entity instanceof Monster) {
 								
@@ -274,9 +275,10 @@ public class Awakening extends LightAbility implements AddonAbility, ComboAbilit
 					if (pEntity instanceof Player) {
 						Player pent = (Player) pEntity;
 						BendingPlayer bEntity = BendingPlayer.getBendingPlayer(pent);
-						
-						if (bEntity.hasElement(SpiritElement.DARK_SPIRIT)) {
-							DamageHandler.damageEntity(pEntity, damage, this);
+						if (bEntity != null) {
+							if (bEntity.hasElement(SpiritElement.DARK_SPIRIT)) {
+								DamageHandler.damageEntity(pEntity, damage, this);
+							}
 						}
 					}
 					

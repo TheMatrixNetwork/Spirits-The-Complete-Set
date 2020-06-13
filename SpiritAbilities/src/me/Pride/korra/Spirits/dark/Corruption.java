@@ -168,7 +168,8 @@ public class Corruption extends DarkAbility implements AddonAbility {
 				if (entity instanceof Player) {
 	                Player ePlayer = (Player) entity;
 	                BendingPlayer bEntity = BendingPlayer.getBendingPlayer(ePlayer);
-	                
+	                if(bEntity == null)
+	                    return;
 	                Element darkSpirit = SpiritElement.DARK_SPIRIT;
 					Element lightSpirit = SpiritElement.LIGHT_SPIRIT;
 					

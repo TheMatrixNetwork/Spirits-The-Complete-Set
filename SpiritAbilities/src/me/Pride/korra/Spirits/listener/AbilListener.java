@@ -2,14 +2,11 @@ package me.Pride.korra.Spirits.listener;
 
 import org.bukkit.Location;
 import org.bukkit.Sound;
-import org.bukkit.block.Block;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.FallingBlock;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
@@ -22,7 +19,6 @@ import com.projectkorra.projectkorra.Element;
 import com.projectkorra.projectkorra.ability.CoreAbility;
 import com.projectkorra.projectkorra.configuration.ConfigManager;
 
-import me.Pride.korra.Spirits.combos.Awakening;
 import me.Pride.korra.Spirits.combos.Skyrocket;
 import me.Pride.korra.Spirits.dark.Corruption;
 import me.Pride.korra.Spirits.dark.DarkBeam;
@@ -188,14 +184,14 @@ public class AbilListener implements Listener {
         if (event.getTarget() instanceof Player) {
         	Player player = (Player) event.getTarget();
         	BendingPlayer bPlayer = BendingPlayer.getBendingPlayer(player);
-            
         	boolean enabled = ConfigManager.getConfig().getBoolean("ExtraAbilities.Prride.Spirits.Passives.Dark.DarkAlliance.Enabled");
-        	
-        	if (enabled) {
-        		if (bPlayer.hasElement(SpiritElement.DARK_SPIRIT)) {
-            		event.setCancelled(true);
-                    event.setTarget(null);
-            	}
+        	if (bPlayer != null) {
+	        	if (enabled) {
+	        		if (bPlayer.hasElement(SpiritElement.DARK_SPIRIT)) {
+	            		event.setCancelled(true);
+	                    event.setTarget(null);
+	            	}
+	        	}
         	}
         }
     }
